@@ -1,22 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import SingleItem from "../Components/SingleItem";
-import {getData} from "../Redux/action";
+import {addToCart} from "../Redux/action";
 
 class Homepage extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            optionName:''
+        };
     }
+
+    handleChange=(e)=>{
+        this.setState({
+            optionName:e.target.value
+        })
+    }
+
     render() {
-        const { data } = this.props
+        const { data, addToCart } = this.props
         console.log(data)
 
         return (
             <>
-                {data && data.map((item, index) =>
+                <div>
+                    <select onChange={this.handleChange}>
+                        <option value="all">ALL</option>
+                        {
+                            data && data.map((ele,index)=>{
+                                return(<option value={ele.category}>{ele.category}</option>)
+                            })
+                        }
+                    </select>
+                </div>
+                {data && data.filter(ele=>{
+                    if(ele.category==this.state.optionName)
+                        return true
+                    if(this.state.optionName =="" || this.state.optionName=="all")
+                        return true
+                }).map((item, index) =>
                     <div key={index} >
-                        <SingleItem data={item} />
+                        <SingleItem data={item} addToCart={addToCart}/>
                     </div>
                 )}
             </>
@@ -28,8 +52,13 @@ const mapStateToProps = state => ({
     data: state.productData
 })
 
+const mapDispatchToProps=dispatch=>{
+    return{
+        addToCart:(payload)=>dispatch(addToCart(payload))
+    }
+}
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(Homepage);

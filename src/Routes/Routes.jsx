@@ -8,10 +8,10 @@ import Orders from "./Orders";
 function Routes() {
     return (
         <Switch>
-            <Route path="/" render={() => <Homepage />} />
-            <Route path="/products" render={() => <Products />} />
-            <Route path="/cart" render={() => <Cart />} />
-            <Route path="/orders" render={() => <Orders />} />
+            <Route exact path="/" render={() => <Homepage />} />
+            <Route exact path="/products" render={() => <Products />} />
+            <Route exact path="/cart" render={() => <Cart />} />
+            <Route exact path="/orders" render={() => <Orders />} />
         </Switch>
     );
 }

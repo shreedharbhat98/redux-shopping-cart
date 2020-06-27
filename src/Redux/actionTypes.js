@@ -1,1 +1,2 @@
-export const GET_DATA ="GET_DATA"
+export const ADD_TO_CART_DATA ="ADD_TO_CART_DATA";
+export const ADD_TO_ORDERS_DATA ="ADD_TO_ORDERS_DATA";

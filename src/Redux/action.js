@@ -1,6 +1,11 @@
-import { GET_DATA } from "./actionTypes";
+import { ADD_TO_CART_DATA, ADD_TO_ORDERS_DATA} from "./actionTypes";
 
-export const getData = payload=>({
-    type:GET_DATA,
+export const addToCart = payload=>({
+    type:ADD_TO_CART_DATA,
+    payload
+})
+
+export const placeorder = payload=>({
+    type:ADD_TO_ORDERS_DATA,
     payload
 })

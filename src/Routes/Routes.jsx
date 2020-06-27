@@ -10,6 +10,7 @@ function Routes() {
         <Switch>
             <Route exact path="/" render={() => <Homepage />} />
             <Route exact path="/products" render={() => <Products />} />
+            <Route exact path="/products/:id" render={(props)=><Products {...props} />} />
             <Route exact path="/cart" render={() => <Cart />} />
             <Route exact path="/orders" render={() => <Orders />} />
         </Switch>

@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Problem
 
-In the project directory, you can run:
+Create an ecommerce app with redux and react and routing
+Part-1
 
-### `npm start`
+Create the following routes:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    Home page : /
+    Add products page : /addproducts
+    Cart Page: /cart
+    Orders: /orders
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+It should have the following features:
+Part-2
 
-### `npm test`
+Home Page: (/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    See all the products of the company
+    List by category (by default all should be shown)
+    Add items to the cart
+    A Shopping Cart on the right side of the page
+    Shopping cart should not be visible if the cart is empty
 
-### `npm run build`
+Part-3
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Shopping Cart Component:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+    Should list the products with
+        Name
+        Qty
+        Price
+    Add and Reduce qty. If qty is 1, and you remove the item should be removed from cart.
+    If cart becomes empty the Shopping Cart component should be removed
+    on confirm order, goto /cart
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Part-4
 
-### `npm run eject`
+Product Page: (/product)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    Admin should be able to see list of all prodcuts products
+    create a new category option should also be in this page
+    make a /product/add for adding a new product
+    make a /product/:id to see product details
+    make a /product/:id/edit for edit product page
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Products should contain the following information:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    Name
+    UUID
+    Cost
+    Description
+    Category
+    Image url / image (default image should be given)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Part-5
 
-## Learn More
+Cart Page: /cart:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    Should list the products with all details
+    Add and Reduce qty. If qty is 1, and you remove the item should be removed from cart.
+    If cart becomes empty the Shopping Cart component should be removed
+    Ask for user address, phone no, payment details etc
+    Once order is confirmed, add confirmed orders to redux store
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Part-6
 
-### Code Splitting
+Orders Page: /orders
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+    Should list all the orders with product information in a meaningful way
 
-### Analyzing the Bundle Size
+Use Redux:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    to store the information of all the products
+    to store cart details
+    create seperate action reducer and store files
+    Shopping Cart component should be given limited store and dispatch information
+    Home Page component should not be given Cart information
+    Confirmed orders list with all necessary details

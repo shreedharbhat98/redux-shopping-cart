@@ -8,7 +8,6 @@ class Orders extends Component {
     }
     render() {
         const { data } = this.props
-        console.log(data)
         return (
             <>
             {
@@ -24,11 +23,11 @@ class Orders extends Component {
                                 ele && ele.data.map((data,index)=>{
                                     return(
                                         <div key={index} style={{display:"flex", flexDirection:"column", border:"1px solid black"}}>
-                                            <img src={data.img} alt={data.product_name} style={{width:"100px", height:"100px"}}/>
-                                            <label style={{padding:10}}>{data.product_name} </label>
-                                            <label style={{padding:10}}>{data.price} </label>
-                                            <label style={{padding:10}}>{data.id} </label>
-                                            <label style={{padding:10}}>{data.category} </label>
+                                            <img src={data.item.img} alt={data.item.product_name} style={{width:"100px", height:"100px"}}/>
+                                            <label style={{padding:10}}>{data.item.product_name} </label>
+                                            <label style={{padding:10}}>Price : {data.item.total || data.item.price} </label>
+                                            <label style={{padding:10}}>{data.item.id} </label>
+                                            <label style={{padding:10}}>{data.item.category} </label>
                                         </div>
                                     )
                                 })

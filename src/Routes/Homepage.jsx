@@ -19,7 +19,6 @@ class Homepage extends Component {
 
     render() {
         const { data, addToCart } = this.props
-        console.log(data)
 
         return (
             <>

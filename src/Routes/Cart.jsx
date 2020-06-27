@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {placeorder} from "../Redux/action";
+import {placeorder, addQuantity, reduceQuantity} from "../Redux/action";
 
 class Cart extends Component {
     constructor(props){
@@ -8,7 +8,8 @@ class Cart extends Component {
         this.state={
             name:'',
             email:'',
-            phone:''
+            phone:'',
+            data : []
         }
     }
 
@@ -17,8 +18,25 @@ class Cart extends Component {
             [e.target.name]:e.target.value
         })
     }
+
+    componentDidMount(){
+        this.setState({
+            data : this.props.data
+        })
+    }
+
+    componentWillReceiveProps(){
+        if(this.props.data !== this.state.data){
+            this.setState({
+                data : this.props.data
+            })
+        }
+    }
+
+
     render() {
-        const { data, placeorder } = this.props
+        const { placeorder, addQuantity, reduceQuantity } = this.props
+        const { data } = this.state
         return (
             <>
                 <div>
@@ -28,18 +46,23 @@ class Cart extends Component {
                     <input type="text" onChange={this.handleChange} name="email" />
                     <label>phone</label>
                     <input type="text" onChange={this.handleChange} name="phone" />
-                    <button onClick={()=>placeorder({name:this.state.name,email:this.state.email,phone:this.state.phone,data:data
+                    <button onClick={()=>placeorder({name:this.state.name,email:this.state.email,phone:this.state.phone,data:this.state.data
                     })}>Place order</button>
                 </div>
                 {
                     data && data.map((data,index)=>{
                         return(
                             <div key={index} style={{display:"flex", flexDirection:"column", border:"1px solid black"}}>
-                                <img src={data.img} alt={data.product_name} style={{width:"100px", height:"100px"}}/>
-                                <label style={{padding:10}}>{data.product_name} </label>
-                                <label style={{padding:10}}>{data.price} </label>
-                                <label style={{padding:10}}>{data.id} </label>
-                                <label style={{padding:10}}>{data.category} </label>
+                                <img src={data.item.img} alt={data.item.product_name} style={{width:"100px", height:"100px"}}/>
+                                <label style={{padding:10}}>{data.item.product_name} </label>
+                                <label style={{padding:10}}>{data.item.total || data.item.price} </label>
+                                <label style={{padding:10}}>{data.item.id} </label>
+                                <label style={{padding:10}}>{data.item.category} </label>
+                                <div>
+                                    <button style={{padding:10, margin:10}} onClick={()=>reduceQuantity(data)}> - </button>
+                                    <span>{data.quantity}</span>
+                                    <button style={{padding:10, margin:10}} onClick={()=>addQuantity(data)}> + </button>
+                                </div>
                             </div>
                         )
                     })
@@ -54,7 +77,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    placeorder:(payload)=>dispatch(placeorder(payload))
+    placeorder:(payload)=>dispatch(placeorder(payload)),
+    addQuantity : payload => dispatch(addQuantity(payload)),
+    reduceQuantity : payload => dispatch(reduceQuantity(payload))
 })
 
 export default connect(

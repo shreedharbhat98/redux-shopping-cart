@@ -2,19 +2,20 @@
 Problem
 
 Create an ecommerce app with redux and react and routing
-Part-1
+# Part-1
 
-Create the following routes:
+## Create the following routes:
 
-    Home page : /
-    Add products page : /addproducts
-    Cart Page: /cart
-    Orders: /orders
+    Home page : `/`
+    Add products page : `/addproducts`
+    Cart Page: `/cart`
+    Orders: `/orders`
 
-It should have the following features:
-Part-2
+## It should have the following features:
 
-Home Page: (/)
+# Part-2
+
+## Home Page: (/)
 
     See all the products of the company
     List by category (by default all should be shown)
@@ -22,9 +23,9 @@ Home Page: (/)
     A Shopping Cart on the right side of the page
     Shopping cart should not be visible if the cart is empty
 
-Part-3
+# Part-3
 
-Shopping Cart Component:
+## Shopping Cart Component:
 
     Should list the products with
         Name
@@ -32,17 +33,17 @@ Shopping Cart Component:
         Price
     Add and Reduce qty. If qty is 1, and you remove the item should be removed from cart.
     If cart becomes empty the Shopping Cart component should be removed
-    on confirm order, goto /cart
+    on confirm order, goto `/cart`
 
-Part-4
+# Part-4
 
-Product Page: (/product)
+## Product Page: (/product)
 
     Admin should be able to see list of all prodcuts products
     create a new category option should also be in this page
-    make a /product/add for adding a new product
-    make a /product/:id to see product details
-    make a /product/:id/edit for edit product page
+    make a `/product/` add for adding a new product
+    make a `/product/:id` to see product details
+    make a `/product/:id/` edit for edit product page
 
 Products should contain the following information:
 
@@ -53,9 +54,9 @@ Products should contain the following information:
     Category
     Image url / image (default image should be given)
 
-Part-5
+# Part-5
 
-Cart Page: /cart:
+## Cart Page: /cart:
 
     Should list the products with all details
     Add and Reduce qty. If qty is 1, and you remove the item should be removed from cart.
@@ -63,7 +64,7 @@ Cart Page: /cart:
     Ask for user address, phone no, payment details etc
     Once order is confirmed, add confirmed orders to redux store
 
-Part-6
+# Part-6
 
 Orders Page: /orders
 
